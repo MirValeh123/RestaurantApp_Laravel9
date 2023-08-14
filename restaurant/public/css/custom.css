@@ -1,0 +1,21 @@
+a{
+    color:#343a40 !important;
+}
+a:hover{
+    text-decoration: none;
+}
+.list-group-item a{
+    text-decoration: none;
+}
+
+td a{
+    color: white !important;
+}
+
+/* .img-fluid{
+    display: flex!important;
+    flex-direction: column!important;
+    align-items: center!important;
+    width: 100px;
+} */
+
