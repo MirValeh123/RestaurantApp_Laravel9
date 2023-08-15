@@ -72,16 +72,15 @@ Route::prefix('cashier')->group(function (){
     Route::post('/confirmOrderStatus',[CashierController::class,'confirmOrderStatus'])->name('cashier.confirmOrderStatus');
     Route::post('/deleteSaleDetail',[CashierController::class,'deleteSaleDetail'])->name('cashier.deleteSaleDetail');
     Route::post('/savePayment',[CashierController::class,'savePayment'])->name('cashier.savePayment');
+    Route::get('/showReceipt/{saleID}',[CashierController::class,'showReceipt'])->name('cashier.showReceipt');
 
 
 
 
-    // Route::match(['get', 'post'], '/orderFood', [CashierController::class, 'orderFood'])->name('cashier.orderFood');
 
 
 });
 
-// Route::get('/cashier/getMenuByCategory/{category_id}',[CashierController::class,'getMenuByCategory'])->name('cashier.getMenuByCategory');
 
 Route::get('/report', function ()  {
     return 'this is report page';
