@@ -71,11 +71,12 @@ Route::prefix('cashier')->group(function (){
     Route::get('/getSaleDetailsByTable/{table_id}',[CashierController::class,'getSaleDetailsByTable'])->name('cashier.getSaleDetailsByTable');
     Route::post('/confirmOrderStatus',[CashierController::class,'confirmOrderStatus'])->name('cashier.confirmOrderStatus');
     Route::post('/deleteSaleDetail',[CashierController::class,'deleteSaleDetail'])->name('cashier.deleteSaleDetail');
+    Route::post('/savePayment',[CashierController::class,'savePayment'])->name('cashier.savePayment');
+
 
 
 
     // Route::match(['get', 'post'], '/orderFood', [CashierController::class, 'orderFood'])->name('cashier.orderFood');
-
 
 
 });
