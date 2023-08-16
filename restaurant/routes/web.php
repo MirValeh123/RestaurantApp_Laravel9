@@ -6,6 +6,7 @@ use App\Http\Controllers\Management\CategoryController;
 use App\Http\Controllers\Management\MenuController;
 use App\Http\Controllers\Management\TableController;
 use App\Http\Controllers\Cashier\CashierController;
+use App\Http\Controllers\Report\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +82,14 @@ Route::prefix('cashier')->group(function (){
 
 });
 
+Route::prefix('report')->group(function (){
+    Route::get('/', [ReportController::class, 'index'])->name('report.index');
 
-Route::get('/report', function ()  {
-    return 'this is report page';
+
+
+
+
+
 });
+
+

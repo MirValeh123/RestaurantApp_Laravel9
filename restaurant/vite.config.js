@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
+import sass from 'vite-plugin-sass';
 
 export default defineConfig({
     plugins: [
@@ -18,8 +19,11 @@ export default defineConfig({
                     includeAbsolute: false,
                 },
             },
-        }),
+        })
+        // sass(),
+
     ],
+
     resolve: {
         alias: {
             vue: 'vue/dist/vue.esm-bundler.js',

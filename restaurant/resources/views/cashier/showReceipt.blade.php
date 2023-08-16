@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Restaurant App - Receipt - SaleID :  {{$sale->id }}</title>
+    <link rel="stylesheet" href="{{asset('/css/receipt.css')}}" media="all" >
+    <link rel="stylesheet" href="{{asset('/css/no-print.css')}}" media="print" >
 </head>
 <body>
 <div id="wrapper">
@@ -50,16 +52,13 @@
                 <tr>
                     <tr>
                         <td colspan="2" >Payment Type</td>
-                        <td colspan="2" >{{$sale->paymentType}}</td>
+                        <td colspan="2" >{{$sale->payment_type}}</td>
                     </tr>
                     <tr>
                         <td colspan="2" >Paid Amount</td>
                         <td colspan="2" >${{number_format($sale->total_recieved,2)}}</td>
                     </tr>
-                    <tr>
-                        <td colspan="2" >Payment Type</td>
-                        <td colspan="2" >{{$sale->payment_type}}</td>
-                    </tr>
+
                     <tr>
                         <td colspan="2" >Change</td>
                         <td colspan="2" >${{number_format($sale->change,2)}}</td>
@@ -70,7 +69,7 @@
             </tbody>
         </table>
     </div>
-    <div class="receipt-footer">
+    <div id="receipt-footer">
         <p>Thank You!!!</p>
     </div>
     <div id="buttons">

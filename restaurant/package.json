@@ -15,5 +15,12 @@
         "sass": "^1.56.1",
         "vite": "^4.0.0",
         "vue": "^3.2.37"
+    },
+    "dependencies": {
+        "@mdi/font": "^2.2.43",
+        "bootstrap": "^4.1.1",
+        "moment": "^2.29.4",
+        "tempusdominus-bootstrap-4": "^5.39.2",
+        "vite-plugin-sass": "^0.1.0"
     }
 }
