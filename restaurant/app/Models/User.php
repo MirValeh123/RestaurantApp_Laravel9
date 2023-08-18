@@ -42,4 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function checkAdmin() {
+        if ($this->role == 'admin') {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 }

@@ -19,6 +19,7 @@
     "dependencies": {
         "@mdi/font": "^2.2.43",
         "bootstrap": "^4.1.1",
+        "flatpickr": "^4.6.13",
         "moment": "^2.29.4",
         "tempusdominus-bootstrap-4": "^5.39.2",
         "vite-plugin-sass": "^0.1.0"

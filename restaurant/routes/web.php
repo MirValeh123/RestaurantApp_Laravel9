@@ -84,6 +84,17 @@ Route::prefix('cashier')->group(function (){
 
 Route::prefix('report')->group(function (){
     Route::get('/', [ReportController::class, 'index'])->name('report.index');
+    Route::prefix('/show')->group(function (){
+        Route::get('/', [ReportController::class, 'show'])->name('report.show');
+        Route::get('/export', [ReportController::class, 'export'])->name('report.export');
+
+
+
+
+
+
+
+    });
 
 
 
