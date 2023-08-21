@@ -141,7 +141,7 @@ class CashierController extends Controller
             <tr>
                 <td>'.$saledetail->menu_id.'</td>
                 <td>'.$saledetail->menu_name.'</td>
-                <td>'.$saledetail->quantity.'</td>
+                <td><button data-id="'.$saledetail->id.'"   class="btn btn-danger btn-sm btn-decrease-quantity " >-</button>'.$saledetail->quantity.'<button data-id="'.$saledetail->id.'"   class="btn btn-primary btn-sm btn-increase-quantity " >+</button></td>
 
                 <td>'.$saledetail->menu_price.'</td>
                 <td>'.($saledetail->menu_price * $saledetail->quantity).'</td>';
@@ -166,7 +166,10 @@ class CashierController extends Controller
         ';
         $sale=Sale::find($sale_id);
         $html.='<hr>';
-        $html.='<h3>Total Amount:$'.number_format($sale->total_price).'</h3>';
+        if ($sale) {
+            $html.='<h3>Total Amount:$'.number_format($sale->total_price).'</h3>';
+
+        }
         if ($showBtnPayment) {
             $html.='<button data-id="'.$sale_id.'"  class="btn btn-success btn-block btn-payment" data-toggle="modal" data-target="#exampleModal" data-totalAmount="'.$sale->total_price.'" >Payment</button>';
 
@@ -175,6 +178,39 @@ class CashierController extends Controller
             $html.='<button data-id="'.$sale_id.'"  class="btn btn-warning btn-block btn-confirm-order">Confirm order</button>';
 
         }
+        return $html;
+    }
+
+    public function increaseQuantity(Request $request) {
+        $saleDetail_id=$request->saleDetail_id;
+        $saleDetail=SaleDetail::where('id',$saleDetail_id)->first();
+        $saleDetail->quantity=$saleDetail->quantity +1;
+        $saleDetail->save();
+
+        //update total amount
+        $sale=Sale::where('id',$saleDetail->sale_id)->first();
+        $sale->total_price=$sale->total_price + $saleDetail->menu_price;
+        $sale->save();
+
+
+        $html=$this->getSaledetails($saleDetail->sale_id);
+        return $html;
+    }
+
+
+    public function decreaseQuantity(Request $request) {
+        $saleDetail_id=$request->saleDetail_id;
+        $saleDetail=SaleDetail::where('id',$saleDetail_id)->first();
+        $saleDetail->quantity=$saleDetail->quantity -1;
+        $saleDetail->save();
+
+        //update total amount
+        $sale=Sale::where('id',$saleDetail->sale_id)->first();
+        $sale->total_price=$sale->total_price - $saleDetail->menu_price;
+        $sale->save();
+
+
+        $html=$this->getSaledetails($saleDetail->sale_id);
         return $html;
     }
     public function confirmOrderStatus(Request $request) {

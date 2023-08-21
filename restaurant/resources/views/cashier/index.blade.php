@@ -123,7 +123,7 @@ $('#list-menu').on('click','.btn-menu',function(){
     }
     else{
         var menu_id=$(this).data('id')
-       
+
 
         $.ajax({
             type:'POST',
@@ -166,6 +166,39 @@ $('#order-detail').on('click','.btn-delete-saledetail',function(){
             'saleDetail_id':saledetailId,
         },
         url:'/cashier/deleteSaleDetail',
+        success:function (data) {
+            $('#order-detail').html(data);
+
+        }
+    })
+})
+
+//increase quantity
+$('#order-detail').on('click','.btn-increase-quantity',function(){
+    var saledetailId=$(this).data('id');
+    $.ajax({
+        type:'POST',
+        data:{
+            '_token':$('meta[name="csrf-token"]').attr('content'),
+            'saleDetail_id':saledetailId,
+        },
+        url:'/cashier/increase-quantity',
+        success:function (data) {
+            $('#order-detail').html(data);
+
+        }
+    })
+})
+
+$('#order-detail').on('click','.btn-decrease-quantity',function(){
+    var saledetailId=$(this).data('id');
+    $.ajax({
+        type:'POST',
+        data:{
+            '_token':$('meta[name="csrf-token"]').attr('content'),
+            'saleDetail_id':saledetailId,
+        },
+        url:'/cashier/decrease-quantity',
         success:function (data) {
             $('#order-detail').html(data);
 
